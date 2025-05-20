@@ -448,6 +448,30 @@ True
 
 <details>
 <summary>Explain what are ACLs. For what use cases would you recommend to use them?</summary><br><b>
+  **What are ACLs?**
+
+*   ACL stands for **Access Control List**.
+*   In Linux, ACLs are an **extension** to the standard Discretionary Access Control (DAC) model, which is the traditional `rwx` permissions for the **owner**, the **owning group**, and **others**.
+*   They allow for **fine-grained** permission management beyond this basic model.
+*   Specifically, ACLs enable you to grant permissions (`rwx`) to:
+    *   **Specific named users**, regardless of whether they are the owner.
+    *   **Specific named groups**, beyond just the owning group.
+    *   They can also define **default permissions** for new objects created within a directory.
+*   You can tell if a file or directory has an ACL applied because the output of `ls -l` will show a **`+`** symbol at the end of the permission string. For example: `-rw-r-----+`.
+*   ACLs are managed using the `getfacl` command to view them and the `setfacl` command to modify them.
+
+**In simple terms:** ACLs provide a way to grant precise permissions to *individual* users or groups on a file or directory, which isn't possible with just the owner, group, and world settings.
+
+**When to Use ACLs (Use Cases):**
+
+You would recommend using ACLs in situations where the traditional owner/group/others permission model is insufficient for your access control requirements. Key use cases include:
+
+1.  **Complex Shared Directories:** When you have a directory that needs to be accessed by multiple specific users or groups, each potentially requiring different permissions (e.g., some need write, others only read), and managing this via traditional groups becomes overly complex or requires users to be members of numerous supplementary groups.
+2.  **Specific Application/Service Account Access:** Allowing a particular system user (like a web server process user, `www-data`) or a specific application's service account read or write access to certain files or directories, without granting that access to the entire owning group or making the file world-accessible.
+3.  **Overriding Group Limitations:** When a user is not in the owning group, but needs access that can't be covered by the 'others' permissions, and you don't want to change the primary owning group or add the user to it just for this specific resource.
+4.  **Default Permissions Inheritance:** Setting default ACL entries on a directory so that any new files or subdirectories created within it automatically inherit specific permissions for certain users or groups.
+
+Essentially, any time you need more granular control over who can do what with a file or directory than the basic owner/group/others framework provides, ACLs are the appropriate solution.
 </b></details>
 
 <details>
