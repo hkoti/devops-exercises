@@ -1019,18 +1019,19 @@ There are many answers for this question. One way is running `df -T`
 </b></details>
 
 <details>
-<summary>What is LVM?</summary><br><b>
-</b></details>
-
-<details>
-<summary>Explain the following in regards to LVM:
-
+<summary>What is LVM?
+Explain the following in regards to LVM:
   * PV
   * VG
   * LV</summary><br><b>
-
-
+   LVM stands for Logical Volume Management.
+It's a storage management technology for Linux (and other Unix-like operating systems) that provides a higher level of abstraction over physical storage devices (like hard drives or SSDs).
+Instead of directly working with physical disk partitions, LVM introduces layers:
+Physical Volumes (PVs): These are the raw disks or partitions that LVM uses. You initialize a physical disk or partition to be used as a PV.
+Volume Groups (VGs): A Volume Group is a pool of storage created by combining one or more Physical Volumes. It acts as a single logical storage unit.
+Logical Volumes (LVs): Logical Volumes are carved out of a Volume Group. These LVs are what the operating system sees as standard blo
 </b></details>
+
 
 <details>
 <summary>What is NFS? What is it used for?</summary><br><b>
