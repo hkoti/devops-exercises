@@ -1009,6 +1009,7 @@ There are many answers for this question. One way is running `df -T`
 
 <details>
 <summary>You are trying to create a new file but you get "File system is full". You check with df for free space and you see you used only 20% of the space. What could be the problem?</summary><br><b>
+   if df shows that only 20% of the disk space (data blocks) is used, but you're getting a "File system is full" error when trying to create a new file, the most likely problem is that the file system has run out of inodes.
 </b></details>
 
 <details>
